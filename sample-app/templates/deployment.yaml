@@ -54,6 +54,9 @@ spec:
     matchLabels:
       app.kubernetes.io/name: {{ template "app.name" . }}
   replicas: {{ .Values.replicaCount }}
+  revisionHistoryLimit: 3
+  progressDeadlineSeconds: 10
+  progressDeadlineAbort: true
   workloadRef:
     apiVersion: apps/v1
     kind: Deployment

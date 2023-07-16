@@ -55,8 +55,10 @@ spec:
       app.kubernetes.io/name: {{ template "app.name" . }}
   replicas: {{ .Values.replicaCount }}
   revisionHistoryLimit: 3
-  progressDeadlineSeconds: 10
+  progressDeadlineSeconds: 30
   progressDeadlineAbort: true
+  rollbackWindow:
+    revisions: 3
   workloadRef:
     apiVersion: apps/v1
     kind: Deployment
